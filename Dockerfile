@@ -12,6 +12,7 @@ ADD files/check_db.sh /opt/check_db.sh
 RUN git clone git://github.com/facebook/libphutil.git /var/www/libphutil
 RUN git clone git://github.com/facebook/arcanist.git /var/www/arcanist
 RUN git clone git://github.com/facebook/phabricator.git /var/www/phabricator
+RUN sed -i -e "s/apc.stat=1/apc.stat=0/" /etc/php.d/apc.ini
 
 VOLUME ["/var/lib/mysql","/var/repo"]
 CMD ["supervisord", "-n"]
