@@ -15,4 +15,5 @@ RUN git clone git://github.com/facebook/phabricator.git /var/www/phabricator
 RUN sed -i -e "s/apc.stat=1/apc.stat=0/" /etc/php.d/apc.ini
 
 VOLUME ["/var/lib/mysql","/var/repo"]
+RUN ["chmod", "go+rwX", "/var/repo"] 
 CMD ["supervisord", "-n"]
